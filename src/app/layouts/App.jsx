@@ -6,12 +6,27 @@ import { Container } from 'react-bootstrap';
 
 function App() {
   const [formOpen,setFormOpen] = useState(false)
+  
+  const [selectedEvent,setSelectedEvent] = useState(null)
 
+  const selectEvent = event =>{
+      setSelectedEvent(event)
+      setFormOpen(true)
+    }
+    const handleCreateFormOpen = () =>{
+      setFormOpen(true)
+      setSelectedEvent(null)
+  }
   return (
     <>
-      <NavBar setFormOpen={setFormOpen}/>
-      <Container>
-        <EventDashboard formOpen={formOpen} setFormOpen={setFormOpen}/>
+      <NavBar setFormOpen={handleCreateFormOpen}/>
+      <Container className="m-auto">
+        <EventDashboard 
+          formOpen={formOpen} 
+          setFormOpen={setFormOpen} 
+          selectEvent={selectEvent}
+          selectedEvent={selectedEvent} 
+        />
       </Container>
     </>
   );

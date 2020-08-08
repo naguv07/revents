@@ -4,10 +4,10 @@ import EventListAttendee from './EventListAttendee';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import RoomIcon from '@material-ui/icons/Room';
 
-export default function EventListItem({event,...props}) {
+export default function EventListItem({event,selectEvent,deleteEvent}) {
     return(
         <>
-            <ListGroup className="m-2 p-2">
+            <ListGroup className="p-2">
                 <ListGroupItem>
                     <Media className="bg-white mt-2 p-2 rounded">
                         <Image
@@ -21,7 +21,7 @@ export default function EventListItem({event,...props}) {
                         <Media.Body>
                             <h5>{event.title}</h5>
                             <p>
-                                Hosted by <b>{event.hostedBy}hostedBy</b>
+                                Hosted by <b>{event.hostedBy}</b>
                             </p>
                         </Media.Body>
                     </Media>
@@ -46,7 +46,8 @@ export default function EventListItem({event,...props}) {
                 <ListGroupItem>
                     <Media >
                         <div>{event.description}</div>
-                        <Button className="float-right" variant="info">View</Button>
+                        <Button className="float-right ml-2" variant="danger" onClick={() => deleteEvent(event.id)}>Delete</Button>
+                        <Button className="float-right ml-2" variant="info" onClick={() => selectEvent(event)}>View</Button>
                     </Media>
                 </ListGroupItem>
             </ListGroup>
