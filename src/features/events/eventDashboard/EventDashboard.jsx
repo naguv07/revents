@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import EventList from '../eventList/EventList';
-import EventForm from '../../eventForm/EventForm';
 import {sampleData} from '../../../app/api/sampleData'
-const EventDashboard = ({formOpen,setFormOpen,selectEvent,selectedEvent}) => {
+const EventDashboard = () => {
     const [events,setEvent] = useState(sampleData)
     
-    const createEvent = values =>{
-        setEvent([...events,values])
-    }
+    // const createEvent = values =>{
+    //     setEvent([...events,values])
+    // }
 
-    const handleUpdateEvent = event =>{
-        console.log('Update Event')
-        setEvent(events.map(evt=>evt.id === event.id?event:evt))
-        setFormOpen(false)
-        selectEvent(null)
-    }
+    // const handleUpdateEvent = event =>{
+    //     setEvent(events.map(evt=>evt.id === event.id?event:evt))
+    // }
     
     const handleDeleteEvent = eventId =>{
         setEvent(events.filter(evt=>evt.id !== eventId ))
@@ -25,19 +21,11 @@ const EventDashboard = ({formOpen,setFormOpen,selectEvent,selectedEvent}) => {
     return(
         <Row>
             <Col>
-                <EventList events={events} selectEvent={selectEvent} deleteEvent={handleDeleteEvent} />
+                <EventList events={events} deleteEvent={handleDeleteEvent} />
             </Col>
-                {formOpen&&
-                    <Col md="5">
-                        <EventForm 
-                        setFormOpen={setFormOpen} 
-                        createEvent={createEvent} 
-                        selectedEvent={selectedEvent} 
-                        key={selectedEvent ? selectedEvent.id : null}
-                        handleUpdateEvent= {handleUpdateEvent}
-                        />
-                    </Col>
-                }
+            <Col md="4">
+                <h2>Event Filters</h2>
+            </Col>
         </Row>
     )
 }

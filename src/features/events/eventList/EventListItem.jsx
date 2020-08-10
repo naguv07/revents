@@ -3,6 +3,7 @@ import { Media, Image, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
 import EventListAttendee from './EventListAttendee';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import RoomIcon from '@material-ui/icons/Room';
+import { Link } from 'react-router-dom';
 
 export default function EventListItem({event,selectEvent,deleteEvent}) {
     return(
@@ -47,7 +48,7 @@ export default function EventListItem({event,selectEvent,deleteEvent}) {
                     <Media >
                         <div>{event.description}</div>
                         <Button className="float-right ml-2" variant="danger" onClick={() => deleteEvent(event.id)}>Delete</Button>
-                        <Button className="float-right ml-2" variant="info" onClick={() => selectEvent(event)}>View</Button>
+                        <Button className="float-right ml-2" variant="info" as={Link} to={`/events/${event.id}`}>View</Button>
                     </Media>
                 </ListGroupItem>
             </ListGroup>

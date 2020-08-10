@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { NavLink, useHistory } from 'react-router-dom';
+import SignedInMenu from './SignedInMenu';
+import SignedOutMenu from './SignedOutMenu';
 
-export default function NavBar ({loggedIn,setFormOpen}){
+export default function NavBar ({setFormOpen}){
+    const history = useHistory()
+    const [authenitcated,setAuthenitcated] = useState(false)
+
+    const handleSignOut = () =>{
+        setAuthenitcated(false)
+        history.push("/")
+    }
+
     return(
-        <Navbar sticky="top" collapseOnSelect expand="lg" variant="dark" >
+        <Navbar fixed="top" collapseOnSelect expand="lg" variant="dark" >
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand as={NavLink} exact to="/">
                     <img
-                        src="assets/logo.png"
+                        src="/assets/logo.png"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
@@ -19,24 +30,18 @@ export default function NavBar ({loggedIn,setFormOpen}){
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#features">Events</Nav.Link>
-                        <Nav><Button type="button" onClick={() =>setFormOpen(true)} className="float-right" variant="success">Create Event</Button></Nav>
+                        <Nav.Link as={NavLink} to="/events">Events</Nav.Link>
+                        {authenitcated &&
+                        <Nav.Link as={NavLink} to="/createevent"><Button type="button" variant="success">Create Event</Button></Nav.Link>
+                        }
                     </Nav>
                     <Nav>
                         {
-                            (loggedIn === undefined)
+                            authenitcated
                             ?
-                            <>
-                        <Nav.Link href="#pricing">Login</Nav.Link>
-                        <Nav.Link href="#pricing">Sign Up</Nav.Link>
-                        </>
-                        :
-                        <>
-                            <Nav.Link href="#deets">More deets</Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                Dank memes
-                            </Nav.Link>
-                        </>
+                            <SignedInMenu handleSignOut={handleSignOut} />
+                            :
+                            <SignedOutMenu setAuthenitcated={setAuthenitcated}/>
                         }
                     </Nav>
                 </Navbar.Collapse>

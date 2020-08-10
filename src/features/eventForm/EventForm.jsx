@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Media, Button } from 'react-bootstrap';
 import cuid from 'cuid';
+import { Link } from 'react-router-dom';
 
 export default function EventForm({setFormOpen,createEvent,selectedEvent,handleUpdateEvent}) {
     const initialValues = selectedEvent ?? {
@@ -80,7 +81,7 @@ export default function EventForm({setFormOpen,createEvent,selectedEvent,handleU
                     <Button className="float-right ml-2" variant="success" type="submit">
                         Submit
                     </Button>
-                    <Button className="float-right ml-2" variant="secondary" type="button" onClick={()=>setFormOpen(false)}>
+                    <Button className="float-right ml-2" variant="secondary" type="button" as={Link} to="/events">
                         Cancel
                     </Button>
                 </Form>
