@@ -2,7 +2,7 @@
   "name": "revents",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://naguv07.github.io/revents",
+  "homepage": "http://naguv07.github.io/revents/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
