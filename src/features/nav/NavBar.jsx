@@ -18,7 +18,7 @@ export default function NavBar ({setFormOpen}){
             <Container>
                 <Navbar.Brand as={NavLink} exact to="/">
                     <img
-                        src="/assets/logo.png"
+                        src={process.env.PUBLIC_URL+"/assets/logo.png"}
                         width="30"
                         height="30"
                         className="d-inline-block align-top"

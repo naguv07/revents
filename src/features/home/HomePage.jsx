@@ -8,7 +8,7 @@ export default function HomePage({history}){
             <Container fluid>
                 <h1>
                     <Image
-                    src="/assets/logo.png" />
+                    src={process.env.PUBLIC_URL+"/assets/logo.png"} />
                     Re-events
                 </h1>
                 <Button variant="outline-light dark" onClick={()=>history.push("/events")}>

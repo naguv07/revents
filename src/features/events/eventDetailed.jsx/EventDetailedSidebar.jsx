@@ -15,7 +15,7 @@ export default function EventDetailedSideBar(){
                     width={64}
                     height={64}
                     className="mr-3"
-                    src="/assets/user.png"
+                    src={process.env.PUBLIC_URL+"/assets/user.png"}
                     alt="Generic placeholder"
                     />
                     <Media.Body>
@@ -28,7 +28,7 @@ export default function EventDetailedSideBar(){
                     width={64}
                     height={64}
                     className="mr-3"
-                    src="/assets/user.png"
+                    src={process.env.PUBLIC_URL+"/assets/user.png"}
                     alt="Generic placeholder"
                     />
                     <Media.Body>
@@ -41,7 +41,7 @@ export default function EventDetailedSideBar(){
                     width={64}
                     height={64}
                     className="mr-3"
-                    src="/assets/user.png"
+                    src={process.env.PUBLIC_URL+"/assets/user.png"}
                     alt="Generic placeholder"
                     />
                     <Media.Body>

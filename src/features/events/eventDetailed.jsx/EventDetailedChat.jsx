@@ -13,7 +13,7 @@ export default function EventDetailedChat(){
                 <Media className="bg-white p-2">
                     <Media.Body>
                         <Media>
-                            <Image src="/assets/user.png"
+                            <Image src={process.env.PUBLIC_URL+"/assets/user.png"}
                             width="30"
                             height="30"
                             className="mr-2"
@@ -22,7 +22,7 @@ export default function EventDetailedChat(){
                                 <h6 style={{marginBottom:0,}}>Matt <span className="text-muted" style={{fontSize:13,}}>Today at 7:11 pm</span></h6>
                                 <p>How Attracted!</p>
                                 <Media>
-                                    <Image src="/assets/user.png"
+                                    <Image src={process.env.PUBLIC_URL+"/assets/user.png"}
                                     width="30"
                                     height="30"
                                     className="mr-2"

@@ -17,7 +17,7 @@ export default function EventDetailedHeader(){
     return(
         <>
             <Media style={{position:"relative",}}>
-                <Image src="/assets/categoryImages/music.jpg" fluid style={eventImageStyle}/>
+                <Image src={process.env.PUBLIC_URL+"/assets/categoryImages/music.jpg"} fluid style={eventImageStyle}/>
                 <Media.Body style={eventImageTextStyle}>
                     <h3>Event Title</h3>
                     <p>Event Date</p>
