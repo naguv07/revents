@@ -11,14 +11,14 @@ import EventForm from '../../features/eventForm/EventForm';
 function App() {
   return (
     <>
-      <Route exact path="/" component={HomePage}/>
-      <Route path={'/(.+)'} render={() => (
+      <Route exact path={process.env.PUBLIC_URL+"/"} component={HomePage}/>
+      <Route path={process.env.PUBLIC_URL+'/(.+)'} render={() => (
         <>
           <NavBar />
           <Container className="content-body">
-            <Route exact path="/events" component={EventDashboard}/>
-            <Route path="/events/:id" component={EventDetailed}/>
-            <Route path={["/createevent","/manage/:id"]} component={EventForm}/>
+            <Route exact path={process.env.PUBLIC_URL+"/events"} component={EventDashboard}/>
+            <Route path={process.env.PUBLIC_URL+"/events/:id"} component={EventDetailed}/>
+            <Route path={[process.env.PUBLIC_URL+"/createevent",process.env.PUBLIC_URL+"/manage/:id"]} component={EventForm}/>
           </Container>
         </>
       ) } />

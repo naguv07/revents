@@ -3,6 +3,7 @@ import { Dropdown,DropdownButton } from 'react-bootstrap';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AddIcon from '@material-ui/icons/Add';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import { Link } from 'react-router-dom';
 export default function SignedInMenu({setAuthenitcated,handleSignOut}){
     return(
         <>
@@ -14,7 +15,7 @@ export default function SignedInMenu({setAuthenitcated,handleSignOut}){
                 variant="outline-light"
                 icon={AccountCircleIcon}
                 >
-                   <Dropdown.Item href="/createevent">
+                   <Dropdown.Item as={Link} to={process.env.PUBLIC_URL+"/createevent"}>
                         <AddIcon/> {' '}
                         Create Event
                     </Dropdown.Item>

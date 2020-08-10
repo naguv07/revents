@@ -10,13 +10,13 @@ export default function NavBar ({setFormOpen}){
 
     const handleSignOut = () =>{
         setAuthenitcated(false)
-        history.push("/")
+        history.push(process.env.PUBLIC_URL+"/")
     }
 
     return(
         <Navbar fixed="top" collapseOnSelect expand="lg" variant="dark" >
             <Container>
-                <Navbar.Brand as={NavLink} exact to="/">
+                <Navbar.Brand as={NavLink} exact to={process.env.PUBLIC_URL+"/"}>
                     <img
                         src={process.env.PUBLIC_URL+"/assets/logo.png"}
                         width="30"
@@ -30,9 +30,9 @@ export default function NavBar ({setFormOpen}){
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link as={NavLink} to="/events">Events</Nav.Link>
+                        <Nav.Link as={NavLink} to={process.env.PUBLIC_URL+"/events"}>Events</Nav.Link>
                         {authenitcated &&
-                        <Nav.Link as={NavLink} to="/createevent"><Button type="button" variant="success">Create Event</Button></Nav.Link>
+                        <Nav.Link as={NavLink} to={process.env.PUBLIC_URL+"/createevent"}><Button type="button" variant="success">Create Event</Button></Nav.Link>
                         }
                     </Nav>
                     <Nav>

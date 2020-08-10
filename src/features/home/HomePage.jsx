@@ -11,7 +11,7 @@ export default function HomePage({history}){
                     src={process.env.PUBLIC_URL+"/assets/logo.png"} />
                     Re-events
                 </h1>
-                <Button variant="outline-light dark" onClick={()=>history.push("/events")}>
+                <Button variant="outline-light dark" onClick={()=>history.push(process.env.PUBLIC_URL+"/events")}>
                         Get Started
                     <ArrowRightAltIcon/>
                 </Button>

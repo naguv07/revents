@@ -48,7 +48,7 @@ export default function EventListItem({event,selectEvent,deleteEvent}) {
                     <Media >
                         <div>{event.description}</div>
                         <Button className="float-right ml-2" variant="danger" onClick={() => deleteEvent(event.id)}>Delete</Button>
-                        <Button className="float-right ml-2" variant="info" as={Link} to={`/events/${event.id}`}>View</Button>
+                        <Button className="float-right ml-2" variant="info" as={Link} to={process.env.PUBLIC_URL+`/events/${event.id}`}>View</Button>
                     </Media>
                 </ListGroupItem>
             </ListGroup>
