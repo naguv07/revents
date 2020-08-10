@@ -81,7 +81,7 @@ export default function EventForm({setFormOpen,createEvent,selectedEvent,handleU
                     <Button className="float-right ml-2" variant="success" type="submit">
                         Submit
                     </Button>
-                    <Button className="float-right ml-2" variant="secondary" type="button" as={Link} to="/events">
+                    <Button className="float-right ml-2" variant="secondary" type="button" as={Link} to={process.env.PUBLIC_URL+"/events"}>
                         Cancel
                     </Button>
                 </Form>
