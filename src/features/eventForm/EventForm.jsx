@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Form, Media, Button } from 'react-bootstrap';
 import cuid from 'cuid';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateEvent } from '../events/EventActions';
 
-export default function EventForm({setFormOpen,createEvent,selectedEvent,handleUpdateEvent}) {
+export default function EventForm({match,history}) {
+    const selectedEvent = useSelector(state=>state.event.events.find(evt=> evt.id === match.params.id))
     const initialValues = selectedEvent ?? {
         'title' : '',
         'category' : '',
@@ -13,16 +16,16 @@ export default function EventForm({setFormOpen,createEvent,selectedEvent,handleU
         'date' : '',
     }
     const [values,setValues] = useState(initialValues)
-
+    const dispatch =  useDispatch()
     const handleChange = (e) =>{
         const {name,value} = e.target;
         setValues({...values,[name] : value})
     }
     const handleFormSubmit =(e) =>{
         e.preventDefault()
-        selectedEvent ? handleUpdateEvent({...selectedEvent,...values}):
-        createEvent({...values,id:cuid,attendees:[],hostPhotoURL:'assets/user.png',hostedBy:'Bob'})
-        setValues(initialValues)
+        selectedEvent ? dispatch(updateEvent({...selectedEvent,...values})):
+        dispatch(updateEvent({...values,id:cuid,attendees:[],hostPhotoURL:'assets/user.png',hostedBy:'Bob'}))
+        history.push(process.env.PUBLIC_URL+"/events")
     }
 
     return(

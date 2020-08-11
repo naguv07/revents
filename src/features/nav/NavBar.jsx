@@ -31,6 +31,7 @@ export default function NavBar ({setFormOpen}){
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link as={NavLink} to={process.env.PUBLIC_URL+"/events"}>Events</Nav.Link>
+                        <Nav.Link as={NavLink} to={process.env.PUBLIC_URL+"/sandbox"}>Sandbox</Nav.Link>
                         {authenitcated &&
                         <Nav.Link as={NavLink} to={process.env.PUBLIC_URL+"/createevent"}><Button type="button" variant="success">Create Event</Button></Nav.Link>
                         }

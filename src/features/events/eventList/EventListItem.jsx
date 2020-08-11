@@ -4,8 +4,12 @@ import EventListAttendee from './EventListAttendee';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import RoomIcon from '@material-ui/icons/Room';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { deleteEvent } from '../EventActions';
 
-export default function EventListItem({event,selectEvent,deleteEvent}) {
+
+export default function EventListItem({event}) {
+    const dispatch = useDispatch()
     return(
         <>
             <ListGroup className="p-2">
@@ -47,7 +51,7 @@ export default function EventListItem({event,selectEvent,deleteEvent}) {
                 <ListGroupItem>
                     <Media >
                         <div>{event.description}</div>
-                        <Button className="float-right ml-2" variant="danger" onClick={() => deleteEvent(event.id)}>Delete</Button>
+                        <Button className="float-right ml-2" variant="danger" onClick={() => dispatch(deleteEvent(event.id))}>Delete</Button>
                         <Button className="float-right ml-2" variant="info" as={Link} to={process.env.PUBLIC_URL+`/events/${event.id}`}>View</Button>
                     </Media>
                 </ListGroupItem>
