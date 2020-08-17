@@ -5,7 +5,8 @@ import AddIcon from '@material-ui/icons/Add';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import SignedOutMenu from './SignedOutMenu';
+import { signOutUser } from '../auth/authActions';
+
 export default function SignedInMenu(){
     const dispatch = useDispatch()
     const history = useHistory()
@@ -28,7 +29,7 @@ export default function SignedInMenu(){
                         My Profile
                     </Dropdown.Item>
                     <Dropdown.Item  onClick={()=>{
-                        dispatch(SignedOutMenu())
+                        dispatch(signOutUser())
                         history.push(process.env.PUBLIC_URL+"/")
                     }}>
                         <PowerSettingsNewIcon/> {' '}
