@@ -1,6 +1,8 @@
 import React from 'react';
 import { Media, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import {format} from 'date-fns';
+
 
 export default function EventDetailedHeader({event}){
     const eventImageStyle = {
@@ -21,7 +23,7 @@ export default function EventDetailedHeader({event}){
                 <Image src={process.env.PUBLIC_URL+"/assets/categoryImages/"+event.category+".jpg"} style={eventImageStyle}/>
                 <Media.Body style={eventImageTextStyle}>
                     <h3>{event.title} </h3>
-                    <p>{event.date}</p>
+                    <p>{format(event.date,'MMMM d, yyyy h:mm a')}</p>
                     <p>{event.hostedBy}</p>
                 </Media.Body>
             </Media>

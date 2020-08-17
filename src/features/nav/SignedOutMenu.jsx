@@ -1,11 +1,18 @@
 import React from 'react';
-import { Nav } from 'react-bootstrap';
+import { Nav, Button } from 'react-bootstrap';
+import { openModal } from '../../app/common/modals/modalReducer';
+import { useDispatch } from 'react-redux';
 
-export default function SignedOutMenu({setAuthenitcated}){
+export default function SignedOutMenu(){
+    const dispatch = useDispatch()
     return(
         <>
-            <Nav.Link onClick={()=>setAuthenitcated(true)}>Login</Nav.Link>
-            <Nav.Link href="#pricing">Sign Up</Nav.Link>
+            <Nav.Link 
+                onClick={()=>dispatch(openModal({modalType : 'LoginForm'}))}
+                >
+                    <Button type="button" variant="outline-light">Login</Button>
+            </Nav.Link>
+            <Nav.Link href="#pricing"><Button type="button" variant="outline-light">Sign UP</Button></Nav.Link>
         </>
     )
 }

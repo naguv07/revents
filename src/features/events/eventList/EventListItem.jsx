@@ -6,6 +6,7 @@ import RoomIcon from '@material-ui/icons/Room';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteEvent } from '../EventActions';
+import {format} from 'date-fns'
 
 
 export default function EventListItem({event}) {
@@ -34,7 +35,7 @@ export default function EventListItem({event}) {
                 <ListGroupItem>
                     <Media >
                         <span>
-                            <WatchLaterIcon /> {event.date}
+                            <WatchLaterIcon />  {format(event.date,'MMMM d, yyyy h:mm a')}
                             <RoomIcon /> {event.venue}
                         </span>
                     </Media>

@@ -3,17 +3,21 @@ import { Dropdown,DropdownButton } from 'react-bootstrap';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AddIcon from '@material-ui/icons/Add';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import { Link } from 'react-router-dom';
-export default function SignedInMenu({setAuthenitcated,handleSignOut}){
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import SignedOutMenu from './SignedOutMenu';
+export default function SignedInMenu(){
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const {currentUser} = useSelector(state=>state.auth)
     return(
         <>
             <DropdownButton
                 alignRight
-                title="nagu"
+                title={currentUser.email}
                 id="dropdown-menu-align-right"
                 color="danger"
                 variant="outline-light"
-                icon={AccountCircleIcon}
                 >
                    <Dropdown.Item as={Link} to={process.env.PUBLIC_URL+"/createevent"}>
                         <AddIcon/> {' '}
@@ -23,7 +27,10 @@ export default function SignedInMenu({setAuthenitcated,handleSignOut}){
                         <AccountCircleIcon/> {' '}
                         My Profile
                     </Dropdown.Item>
-                    <Dropdown.Item  onClick={handleSignOut}>
+                    <Dropdown.Item  onClick={()=>{
+                        dispatch(SignedOutMenu())
+                        history.push(process.env.PUBLIC_URL+"/")
+                    }}>
                         <PowerSettingsNewIcon/> {' '}
                         Logout
                     </Dropdown.Item>

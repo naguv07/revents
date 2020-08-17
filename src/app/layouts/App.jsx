@@ -8,11 +8,13 @@ import HomePage from '../../features/home/HomePage';
 import EventDetailed from '../../features/events/eventDetailed.jsx/EventDetailed';
 import EventForm from '../../features/eventForm/EventForm';
 import Sandbox from '../../features/sandbox/sandbox';
+import ModalManager from '../common/modals/modalManager';
 
 function App() {
   const {key} = useLocation()
   return (
     <>
+      <ModalManager />
       <Route exact path={process.env.PUBLIC_URL+"/"} component={HomePage}/>
       <Route path={process.env.PUBLIC_URL+'/(.+)'} render={() => (
         <>

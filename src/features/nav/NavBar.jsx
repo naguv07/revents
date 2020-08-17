@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import SignedInMenu from './SignedInMenu';
 import SignedOutMenu from './SignedOutMenu';
+import { useSelector } from 'react-redux';
 
 export default function NavBar ({setFormOpen}){
-    const history = useHistory()
-    const [authenitcated,setAuthenitcated] = useState(false)
-
-    const handleSignOut = () =>{
-        setAuthenitcated(false)
-        history.push(process.env.PUBLIC_URL+"/")
-    }
+    const {authenticated} = useSelector(state=>state.auth)
 
     return(
         <Navbar fixed="top" collapseOnSelect expand="lg" variant="dark" >
@@ -32,17 +27,17 @@ export default function NavBar ({setFormOpen}){
                     <Nav className="mr-auto">
                         <Nav.Link as={NavLink} to={process.env.PUBLIC_URL+"/events"}>Events</Nav.Link>
                         <Nav.Link as={NavLink} to={process.env.PUBLIC_URL+"/sandbox"}>Sandbox</Nav.Link>
-                        {authenitcated &&
+                        {authenticated &&
                         <Nav.Link as={NavLink} to={process.env.PUBLIC_URL+"/createevent"}><Button type="button" variant="success">Create Event</Button></Nav.Link>
                         }
                     </Nav>
                     <Nav>
                         {
-                            authenitcated
+                            authenticated
                             ?
-                            <SignedInMenu handleSignOut={handleSignOut} />
+                            <SignedInMenu />
                             :
-                            <SignedOutMenu setAuthenitcated={setAuthenitcated}/>
+                            <SignedOutMenu/>
                         }
                     </Nav>
                 </Navbar.Collapse>
